@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "title": "Women in Tech Career Fair",
+      "description": "Join India's biggest virtual career fair for women professionals.",
+      "link": "https://www.jobsforher.com/events/virtual-career-fair"
+    },
+    {
+      "title": "Mentorship Program - JobsForHer",
+      "description": "Connect with experienced mentors to advance your career goals.",
+      "link": "https://www.jobsforher.com/mentoring"
+    },
+    {
+      "title": "Leadership Circles - Lean In",
+      "description": "Join a Lean In Circle to develop leadership skills and build a strong network.",
+      "link": "https://leanin.org/circles"
+    },
+    {
+      "title": "Returnship Program - HerSecondInnings",
+      "description": "Restart your career with mentorship support through Returnship Programs.",
+      "link": "https://www.hersecondinnings.com/mentorship"
+    }
+  ]
+}
