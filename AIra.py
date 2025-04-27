@@ -1,3 +1,5 @@
+import time
+
 import PyPDF2
 import streamlit as st
 import pandas as pd
@@ -11,8 +13,68 @@ from datetime import datetime
 st.set_page_config(page_title="AIra - Your Career Assistant", layout="wide", page_icon="assets/favicon.png")
 st.markdown("""
     <style>
+    /* Background gradient */
     body {
         background: linear-gradient(to right, #f8f9fa, #e0eafc);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Center main titles */
+    h1, h2, h3 {
+        text-align: center;
+        color: #5c4d7d;
+        font-weight: bold;
+    }
+
+    /* Sidebar style */
+    .css-1d391kg {
+        background-color: #f0f4f8 !important;
+        border-right: 2px solid #e0e0e0;
+    }
+
+    /* Buttons style */
+    button {
+        background-color: #6C63FF !important;
+        color: white !important;
+        border-radius: 8px !important;
+        border: none !important;
+        font-weight: bold;
+    }
+    button:hover {
+        background-color: #4c45b3 !important;
+        transition: 0.3s ease-in-out;
+    }
+
+    /* Chat messages style */
+    .chat-message {
+        padding: 12px 20px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        max-width: 70%;
+        font-size: 16px;
+        box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+    }
+    .user-message {
+        background-color: #c8e6c9;
+        margin-left: auto;
+        margin-right: 0;
+    }
+    .aira-message {
+        background-color: #e6e6fa;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    /* Text input placeholder styling */
+    input::placeholder, textarea::placeholder {
+        color: #a6a6a6 !important;
+        font-style: italic;
+    }
+
+    /* Divider lines */
+    hr {
+        border: 1px solid #ccc;
+        margin: 20px 0;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -63,7 +125,7 @@ def respond(user_input):
 # -----------------------------
 with st.sidebar:
     st.image('assets/asha_logo.png', width=150)
-    st.title("💛 Welcome to AIra")
+    st.title("Welcome to AIra")
     st.markdown("""
     **Your AI-Powered Career Companion**
     - Profile Page
@@ -76,7 +138,7 @@ with st.sidebar:
     Built ethically for empowering women careers 
     """)
     st.markdown("---")
-    page = st.radio("Navigate", ["Home","Profile Page", "Job Listings", "Events & Mentorships", "Chat with AIra","Resume Analyzer"])
+    page = st.radio("Navigate", ["Home","Profile Page", "Job Listings", "Events & Mentorships", "Chat with AIra","Resume Analyzer","Helpline Numbers", "Support Forum", "Skill Courses", "Career Stories", "Mental Wellness"])
 
 # -----------------------------
 # MAIN CONTENT
@@ -85,15 +147,38 @@ with st.sidebar:
 
 
 if page == "Home":
-    st.title("🌟 Meet AIra - Your Career Empowerment Partner!")
     st.markdown("""
-    > AIra is an AI-powered virtual assistant dedicated to uplifting women in their career journeys.
-    > 
-    > From discovering exciting job opportunities, joining inspiring community events, finding the right mentorship, to navigating your professional growth — AIra guides you with compassion, intelligence, and real-time support.
-    > 
-    > Built on ethical AI principles, AIra ensures unbiased, safe, and empowering interactions for every user.
-    > 
-    > Let's shape a future full of possibilities — together. 
+    <div style='background-color: #fceff9; padding: 50px; border-radius: 15px; text-align: center; box-shadow: 2px 2px 15px rgba(0,0,0,0.1);'>
+
+    <h1 style='color: #6C63FF; font-size: 50px;'>🌟 Welcome to AIra!</h1>
+    <h3 style='color: #555; font-weight: normal;'>Your Personal Career Empowerment Partner </h3>
+
+    <br><br>
+
+    <a href="#start_section">
+    <button style='background-color: #6C63FF; color: white; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer;'> Get Started</button>
+    </a>
+
+    <br><br><br>
+
+    <h4 style='color: #777; font-style: italic;'>"Empowered women empower the world."</h4>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    # A hidden anchor link for scrolling
+    st.markdown("<div id='start_section'></div>", unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    st.subheader("✨ What Can AIra Help You With?")
+    st.markdown("""
+    - 💼 Explore women-centric job opportunities
+    - 📚 Upskill with free courses and certifications
+    - 🫂 Share and discuss challenges anonymously
+    - 📞 Access women's safety helplines
+    - 💬 Chat with an AI career assistant 24x7
+    - 📄 Analyze and upgrade your resume
     """)
 
 
@@ -386,7 +471,9 @@ elif page == "Resume Analyzer":
                                 """)
                 except Exception as e:
                     st.error(f"Error analyzing resume: {str(e)}")
-
+        st.success("✅ Successfully submitted!")
+        time.sleep(1)
+        st.balloons()
         # Add learning resources section
         st.markdown("---")
         st.subheader("🎯 Improve Your Resume")
@@ -424,9 +511,124 @@ elif page == "Profile Page":
 
     if st.button("Save Profile"):
         st.success("✅ Profile Saved Successfully!")
-
+        time.sleep(1)
+        st.balloons()
     st.subheader("👀 Preview")
     st.write(st.session_state.profile)
+
+elif page == "Helpline Numbers":
+    st.title("📞 Women Helpline Numbers")
+
+    st.markdown("""
+    Here are important national helpline numbers for women safety, emergencies, and mental health support:
+
+    - **📞 181 - Women Helpline (All India)**
+    - **📞 112 - Emergency Number (Police, Ambulance, Fire)**
+    - **📞 1091 - Women Police Helpline**
+    - **📞 1098 - Child Helpline**
+    - **📞 1075 - COVID-19 Helpline**
+    - **📞 9152987821 - NCW WhatsApp Helpdesk (for complaints)**
+
+    **Mental Health Support:**
+    - **📞 9152987820 - iCall Psychosocial Helpline**
+    - **📞 1800-599-0019 - Fortis Mental Health Helpline**
+
+    > Your safety and well-being matters. Please don't hesitate to reach out if you need support. 💛
+    """, unsafe_allow_html=True)
+
+    st.success("Tap the numbers if you're on mobile to call directly.")
+
+elif page == "Support Forum":
+    st.title("🫂 Anonymous Women's Support Forum")
+
+    st.markdown("""
+    Share your problems anonymously and get support, advice, and encouragement from other women.  
+    Let's lift each other up! 💪💖
+    """)
+
+    if "support_posts" not in st.session_state:
+        st.session_state.support_posts = []
+
+    st.subheader("💬 Share Your Problem Anonymously")
+    problem_text = st.text_area("Describe your situation (don't mention personal details)...")
+
+    if st.button("Post Anonymously"):
+        if problem_text.strip() != "":
+            st.session_state.support_posts.append({"problem": problem_text, "responses": []})
+            st.success("✅ Your problem has been posted anonymously!")
+
+    st.markdown("---")
+    st.subheader("🫶 Community Support")
+
+    if st.session_state.support_posts:
+        for idx, post in enumerate(st.session_state.support_posts):
+            st.markdown(f"**Anonymous User #{idx+1}:** {post['problem']}")
+            if post['responses']:
+                for response in post['responses']:
+                    st.markdown(f"- 🧡 {response}")
+            response_input = st.text_input(f"Support Message for Post {idx+1}", key=f"response_input_{idx}")
+            if st.button(f"Send Support for Post {idx+1}", key=f"response_button_{idx}"):
+                if response_input.strip() != "":
+                    post['responses'].append(response_input)
+                    st.success("✅ Support message added!")
+    else:
+        st.info("No problems shared yet. Be the first to support someone! 💬")
+
+elif page == "Skill Courses":
+    st.title("📚 Skill Development Opportunities for Women")
+    st.markdown("""
+    Upgrade your career by learning new skills! Here are free or affordable online courses:
+    - [Python for Everybody - Coursera](https://www.coursera.org/specializations/python)
+    - [Google Project Management Certificate](https://grow.google/certificates/project-management/)
+    - [Data Science Free Course - Kaggle](https://www.kaggle.com/learn/overview)
+    - [AI for Everyone - Andrew Ng](https://www.coursera.org/learn/ai-for-everyone)
+    - [Communication Skills - edX](https://www.edx.org/course/essential-communication-skills)
+    - [Leadership for Women - FutureLearn](https://www.futurelearn.com/courses/leadership-for-women)
+
+    > 📢 We recommend taking at least 1 course every 2-3 months to stay ahead!
+    """, unsafe_allow_html=True)
+
+elif page == "Career Stories":
+    st.title("🌟 Inspirational Career Stories")
+
+    st.markdown("""
+    > **Real Women. Real Journeys. Real Inspiration.**
+
+    **1. Aditi's Journey from Homemaker to Software Engineer**
+    - After a career gap of 8 years, Aditi started learning coding through online courses. Today, she works at a top IT company!
+
+    **2. Meera's Leap into Entrepreneurship**
+    - Meera left a stable job to follow her passion in eco-friendly startups. She now runs a successful business with 50+ employees.
+
+    **3. Sneha's Story: Breaking Stereotypes in Mechanical Engineering**
+    - Being the only woman in her class, Sneha pushed through and now works on futuristic automotive designs!
+
+    _"Your story could be the next one inspiring someone!"_ 💬
+    """, unsafe_allow_html=True)
+
+
+elif page == "Mental Wellness":
+    st.title("🧠 Mental Wellness Resources")
+
+    st.markdown("""
+    > **Career growth matters. Your mental health matters more.**
+
+    **Helplines:**
+    - 📞 *iCall Mental Health Helpline*: 9152987820
+    - 📞 *Fortis 24x7 Mental Health Support*: 1800-599-0019
+
+    **Articles:**
+    - [Managing Stress at Work - WHO Guide](https://www.who.int/occupational_health/topics/stressatwp/en/)
+    - [Overcoming Imposter Syndrome](https://hbr.org/2021/02/stop-telling-women-they-have-imposter-syndrome)
+
+    **Apps for Mindfulness:**
+    - [Headspace](https://www.headspace.com/)
+    - [Calm](https://www.calm.com/)
+    - [Insight Timer](https://insighttimer.com/)
+
+    > 🌟 _Strong minds build strong futures._  
+    > It's okay to ask for help. It’s okay to take a break.
+    """, unsafe_allow_html=True)
 
 #-------------
 st.markdown("""
