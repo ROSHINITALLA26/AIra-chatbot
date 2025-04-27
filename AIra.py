@@ -76,7 +76,7 @@ with st.sidebar:
     Built ethically for empowering women careers 
     """)
     st.markdown("---")
-    page = st.radio("Navigate", ["Profile Page","Home", "Job Listings", "Events & Mentorships", "Chat with AIra","Resume Analyzer"])
+    page = st.radio("Navigate", ["Home","Profile Page", "Job Listings", "Events & Mentorships", "Chat with AIra","Resume Analyzer"])
 
 # -----------------------------
 # MAIN CONTENT
